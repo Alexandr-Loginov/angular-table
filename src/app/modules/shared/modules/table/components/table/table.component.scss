@@ -1,0 +1,18 @@
+.table-container {
+    width: 80vw;
+}
+
+.table {
+    table-layout: fixed;
+}
+
+.cell-container,
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.close-icon {
+    cursor: pointer;
+}

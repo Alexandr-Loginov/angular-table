@@ -1,0 +1,12 @@
+<div class="control">
+    <div class="control__parent">
+        <button
+            *ngFor="let control of controls"
+            class="button btn btn-secondary"
+            (click)="handleControl(control)"
+        >
+            {{ control?.name }}
+        </button>
+    </div>
+    <ng-template appControlHost></ng-template>
+</div>

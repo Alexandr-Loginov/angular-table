@@ -1,0 +1,9 @@
+<app-controls
+    [controls]="customControls"
+    [appControlsFor]="tableExample"
+></app-controls>
+<app-table
+    #tableExample
+    [tableContent]="tableContent"
+    (action)="actionHandler($event)"
+></app-table>

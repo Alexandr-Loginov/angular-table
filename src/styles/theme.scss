@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+}
+
+.header,
+.footer {
+    height: 40px;
+    background-color: #343352;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer {
+    font-size: 12px;
+}
