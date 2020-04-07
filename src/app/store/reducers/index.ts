@@ -1,7 +1,7 @@
 import { ActionReducerMap, createReducer, MetaReducer, on } from '@ngrx/store';
-import { CustomControls } from 'src/app/models';
-import { ITableContent } from 'src/app/modules/shared/modules/table/models';
 
+import { CustomControls } from '../../models';
+import { ITableContent } from '../../modules/shared/modules/table/models';
 import * as fromActions from '../actions/table.actions';
 
 export const tableFeatureKey = 'table';

@@ -1,6 +1,6 @@
 import { createSelector } from '@ngrx/store';
-import { CustomControls } from 'src/app/models';
 
+import { CustomControls } from '../../models';
 import { ITableState } from '../reducers';
 
 export const tableSelect = (state) => state.table;

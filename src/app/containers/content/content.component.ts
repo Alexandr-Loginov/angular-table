@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, zip } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { customControlsSettings } from 'src/app/models';
-import { IControl } from 'src/app/modules/shared/models';
-import { ITableContent } from 'src/app/modules/shared/modules/table/models';
-import * as fromActions from 'src/app/store/actions/table.actions';
-import { State } from 'src/app/store/reducers';
-import { operated, tableContent } from 'src/app/store/selectors';
+
+import { customControlsSettings } from '../../models';
+import { IControl } from '../../modules/shared/models';
+import { ITableContent } from '../../modules/shared/modules/table/models';
+import * as fromActions from '../../store/actions/table.actions';
+import { State } from '../../store/reducers';
+import { operated, tableContent } from '../../store/selectors';
 
 @Component({
     selector: 'app-content',
