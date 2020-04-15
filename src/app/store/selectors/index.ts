@@ -28,7 +28,7 @@ function addCounter(type, table) {
             }, []);
             return {
                 headers: table.headers,
-                data: table.data.concat([sum]),
+                data: table.data.length ? table.data.concat([sum]) : table.data,
             };
         case CustomControls.MULTIPLY:
             let mult;
@@ -40,7 +40,9 @@ function addCounter(type, table) {
             }, []);
             return {
                 headers: table.headers,
-                data: table.data.concat([mult]),
+                data: table.data.length
+                    ? table.data.concat([mult])
+                    : table.data,
             };
         default:
             return table;

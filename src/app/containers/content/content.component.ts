@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, zip } from 'rxjs';
-import { filter, first } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
 
 import { customControlsSettings } from '../../models';
 import { IControl } from '../../modules/shared/models';
@@ -53,25 +53,11 @@ export class ContentComponent {
                 break;
             }
             case 'sum': {
-                this.tableContent
-                    .pipe(
-                        first(),
-                        filter((val) => val.data.length != 0)
-                    )
-                    .subscribe((x) => {
-                        this.store.dispatch(fromActions.displaySum());
-                    });
+                this.store.dispatch(fromActions.displaySum());
                 break;
             }
             case 'multiply': {
-                this.tableContent
-                    .pipe(
-                        first(),
-                        filter((val) => val.data.length != 0)
-                    )
-                    .subscribe((x) => {
-                        this.store.dispatch(fromActions.displayMultiply());
-                    });
+                this.store.dispatch(fromActions.displayMultiply());
                 break;
             }
             case 'addColumn': {
