@@ -15,7 +15,7 @@ export interface State {
     table: ITableState;
 }
 
-export const initialState = {
+export const initialState: ITableState = {
     tableContent: {
         headers: ['customer', 'profit/customer'],
         data: [

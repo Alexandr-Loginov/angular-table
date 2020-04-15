@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable, zip } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { filter, first } from 'rxjs/operators';
 
 import { customControlsSettings } from '../../models';
 import { IControl } from '../../modules/shared/models';
@@ -29,9 +29,14 @@ export class ContentComponent {
                 zip(this.store.select(operated), this.tableContent)
                     .pipe(first())
                     .subscribe((x) => {
-                        if (x[0] && x[1].data.length === data) {
+                        if (x[0] && x[1].data.length - 1 === data) {
                             this.store.dispatch(fromActions.removeOperation());
                         } else {
+                            if (x[0] && x[1].data.length === 2) {
+                                this.store.dispatch(
+                                    fromActions.removeOperation()
+                                );
+                            }
                             this.store.dispatch(
                                 fromActions.removeRow({ id: data })
                             );
@@ -48,11 +53,25 @@ export class ContentComponent {
                 break;
             }
             case 'sum': {
-                this.store.dispatch(fromActions.displaySum());
+                this.tableContent
+                    .pipe(
+                        first(),
+                        filter((val) => val.data.length != 0)
+                    )
+                    .subscribe((x) => {
+                        this.store.dispatch(fromActions.displaySum());
+                    });
                 break;
             }
             case 'multiply': {
-                this.store.dispatch(fromActions.displayMultiply());
+                this.tableContent
+                    .pipe(
+                        first(),
+                        filter((val) => val.data.length != 0)
+                    )
+                    .subscribe((x) => {
+                        this.store.dispatch(fromActions.displayMultiply());
+                    });
                 break;
             }
             case 'addColumn': {

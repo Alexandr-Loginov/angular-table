@@ -20,7 +20,6 @@ function addCounter(type, table) {
     switch (type) {
         case CustomControls.SUM:
             let sum;
-            console.log(table);
             sum = table.data.reduce((r, a) => {
                 a.forEach((b, i) => {
                     r[i] = (r[i] || 0) + b;
@@ -33,7 +32,6 @@ function addCounter(type, table) {
             };
         case CustomControls.MULTIPLY:
             let mult;
-            console.log(table);
             mult = table.data.reduce((r, a) => {
                 a.forEach((b, i) => {
                     r[i] = (r[i] || 1) * (b || 1);

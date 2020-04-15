@@ -1,6 +1,6 @@
 import { Directive, Input, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { first, pluck } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
 
 import { ControlsComponent } from '../../components';
 import { ComponentType } from '../../models';
@@ -18,12 +18,14 @@ export class ControlsForDirective implements OnInit, OnDestroy {
 
     public ngOnInit(): void {
         this.appControlsFor.contentChanged.pipe(first()).subscribe((stream) => {
-            this.contentSubscription = stream
-                .pipe(pluck('headers'))
-                .subscribe((headers) => {
-                    console.log(headers);
-                    this.host.data = headers;
-                });
+            this.contentSubscription = stream.pipe().subscribe((data) => {
+                this.host.data = {
+                    ...data,
+                };
+                if (this.host.componentRef) {
+                    this.host.componentRef.instance.data = data;
+                }
+            });
         });
         this.host.controls = this.appControlsFor.defaultControls.concat(
             this.host.controls

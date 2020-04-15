@@ -10,7 +10,7 @@
                     type="text"
                 />
             </div>
-            <div class="input-container">
+            <div class="input-container" *ngIf="data?.data?.length">
                 <label for="defaultValue">Default value</label>
                 <input
                     class="form-control input"

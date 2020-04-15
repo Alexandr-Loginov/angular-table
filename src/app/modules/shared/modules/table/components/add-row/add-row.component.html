@@ -1,7 +1,7 @@
 <div class="add-column-container">
     <form novalidate [formGroup]="addRowGroup">
         <div class="form-container">
-            <div class="input-container" *ngFor="let header of data">
+            <div class="input-container" *ngFor="let header of data.headers">
                 <label for="columnName">{{ header }}</label>
                 <input
                     class="form-control input"

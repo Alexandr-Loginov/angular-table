@@ -20,7 +20,7 @@ export const removeColumn = createAction(
     props<{ id: number }>()
 );
 
-export const removeOperation = createAction('[Table] RemoveRow');
+export const removeOperation = createAction('[Table] RemoveOperation');
 
 export const displaySum = createAction('[Table] DisplaySum');
 

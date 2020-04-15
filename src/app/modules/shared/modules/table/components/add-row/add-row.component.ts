@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
     styleUrls: ['./add-row.component.scss'],
 })
 export class AddRowComponent implements OnInit {
-    @Input() public data = [];
+    @Input() public data;
 
     @Output() public controlResult = new EventEmitter();
 
@@ -20,7 +20,6 @@ export class AddRowComponent implements OnInit {
     }
 
     public submit(): void {
-        console.log(Object.values(this.addRowGroup.value));
         this.controlResult.emit({
             type: 'addRow',
             data: { row: Object.values(this.addRowGroup.value) },
@@ -29,8 +28,7 @@ export class AddRowComponent implements OnInit {
 
     private initForm() {
         this.addRowGroup = this.fb.group({
-            ...this.data.reduce((obj, item) => {
-                console.log(item);
+            ...this.data.headers.reduce((obj, item) => {
                 return {
                     ...obj,
                     [item]: [0, Validators.required],

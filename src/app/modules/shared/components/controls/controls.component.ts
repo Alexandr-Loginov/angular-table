@@ -30,8 +30,9 @@ export class ControlsComponent implements OnInit {
     @ViewChild(ControlHostDirective, { static: true })
     public controlHost: ControlHostDirective;
 
+    public componentRef: ComponentRef<ComponentType>;
+
     private currentControlId: string;
-    private componentRef: ComponentRef<ComponentType>;
     private onSubmit: Subscription;
 
     constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
@@ -69,7 +70,7 @@ export class ControlsComponent implements OnInit {
         const componentRef: ComponentRef<ComponentType> = viewContainerRef.createComponent(
             componentFactory
         );
-        componentRef.instance.data = this.data || host.data;
+        componentRef.instance.data = this.data;
         this.onSubmit = componentRef.instance.controlResult
             .pipe(first())
             .subscribe((result) => {

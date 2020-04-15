@@ -23,6 +23,7 @@ export class TableComponent implements OnChanges {
     public defaultControls = fromModels.getDefaultTableControls(
         {
             component: AddColumnComponent,
+            data: this.tableContent,
         },
         {
             component: AddRowComponent,
@@ -34,7 +35,6 @@ export class TableComponent implements OnChanges {
     }
 
     public actionHandler(type, data) {
-        console.log(data);
         this.action.emit({ type, data });
     }
 }
